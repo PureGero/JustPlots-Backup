@@ -10,7 +10,7 @@ begin editing.
 
 Compiling
 =========
-Compile the source with gradle:
+Compile the source with maven:
 
     $ mvn
 
