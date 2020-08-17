@@ -1,0 +1,8 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+main: net.justminecraft.plots.backup.JustPlotsBackup
+author: PureGero
+api-version: 1.13
+depend: [JustPlots, WorldEdit]
+website: https://github.com/PureGero/JustPlots-Backup
