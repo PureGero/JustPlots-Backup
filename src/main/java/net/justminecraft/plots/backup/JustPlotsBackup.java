@@ -21,6 +21,7 @@ public class JustPlotsBackup extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(this, this);
 
         JustPlots.getCommandExecuter().addCommand(new BackupCommand(this));
+        JustPlots.getCommandExecuter().addCommand(new RestoreCommand(this));
     }
 
     public BackupManager getBackupManager() {
