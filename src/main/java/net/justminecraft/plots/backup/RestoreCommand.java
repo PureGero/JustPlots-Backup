@@ -47,7 +47,7 @@ public class RestoreCommand extends SubCommand {
         if (args.length < 1) {
             long since = sender.hasPermission("justplots.restore.other") ? 0 : plot.getCreation();
 
-            sender.sendMessage(ChatColor.AQUA + "--------- " + ChatColor.WHITE + "Backups for plot " + plot + ChatColor.AQUA + " -------------------");
+            sender.sendMessage(ChatColor.AQUA + "--- " + ChatColor.WHITE + "Backups for plot " + plot + ChatColor.AQUA + " ---");
 
             plugin.getBackupManager().listBackups(plot, since).forEach(backup -> {
                 ChatColor color = ChatColor.AQUA;
