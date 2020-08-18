@@ -97,7 +97,7 @@ public class BackupManager {
         return file;
     }
 
-    private void backupIfNotDuplicate(@NotNull Plot plot) {
+    public boolean backupIfNotDuplicate(@NotNull Plot plot) {
         List<String> backups = listBackups(plot, 0);
 
         File newBackup = save(plot, copy(plot));
@@ -112,12 +112,14 @@ public class BackupManager {
                 if (file.length() == length && byteArrayEqual(bytes, Files.readAllBytes(file.toPath()))) {
                     // Duplicate backup, delete it
                     if (newBackup.delete()) {
-                        return;
+                        return false;
                     }
                 }
             }
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
+            return false;
         }
     }
 

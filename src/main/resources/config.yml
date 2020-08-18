@@ -1,1 +1,3 @@
 minutes-between-manual-backups: 10
+automatic-backup-on-plot-clear: true
+maximum-plot-size-for-automatic-backups: 200
