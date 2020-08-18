@@ -28,6 +28,11 @@ public class BackupCommand extends SubCommand {
             return false;
         }
 
+        if (!sender.hasPermission(getPermission())) {
+            sender.sendMessage(ChatColor.RED + "You do not have permission to run that command");
+            return false;
+        }
+
         Plot plot = JustPlots.getPlotAt((Player) sender);
 
         if (plot == null) {
@@ -35,7 +40,7 @@ public class BackupCommand extends SubCommand {
             return false;
         }
 
-        if (!plot.isOwner((Player) sender) && !sender.hasPermission("justplots.add.other")) {
+        if (!plot.isOwner((Player) sender) && !sender.hasPermission("justplots.backup.other")) {
             sender.sendMessage(ChatColor.RED + JustPlots.getUsername(plot.getOwner()) + " owns that plot");
             return false;
         }
@@ -62,5 +67,9 @@ public class BackupCommand extends SubCommand {
 
     public void onTabComplete(CommandSender sender, String[] args, List<String> tabCompletion) {
 
+    }
+
+    public String getPermission() {
+        return "justplots.backup";
     }
 }

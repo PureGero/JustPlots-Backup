@@ -6,3 +6,16 @@ author: PureGero
 api-version: 1.13
 depend: [JustPlots, WorldEdit]
 website: https://github.com/PureGero/JustPlots-Backup
+permissions:
+  justplots.backup:
+    default: op
+    description: Backup your plot
+  justplots.backup.other:
+    default: op
+    description: Backup someone else's plot
+  justplots.restore:
+    default: op
+    description: Restore your plot
+  justplots.restore.other:
+    default: op
+    description: Restore someone else's plot
