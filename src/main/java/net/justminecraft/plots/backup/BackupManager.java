@@ -80,7 +80,7 @@ public class BackupManager {
         clipboard.setOrigin(BukkitAdapter.asBlockVector(plot.getBottom()));
         ForwardExtentCopy copy = new ForwardExtentCopy(editSession, region, clipboard, region.getMinimumPoint());
         copy.setCopyingEntities(true);
-        copy.setCopyingBiomes(true);
+        copy.setCopyingBiomes(false);
 
         try {
             Operations.completeLegacy(copy);
