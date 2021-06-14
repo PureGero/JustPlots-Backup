@@ -32,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class BackupManager {
 
@@ -55,6 +56,18 @@ public class BackupManager {
 
     @NotNull
     private BlockArrayClipboard copy(@NotNull Plot plot) {
+        // Ensure backup is run in sync
+        if (Bukkit.isPrimaryThread()) {
+            return copySync(plot);
+        } else {
+            CompletableFuture<BlockArrayClipboard> future = new CompletableFuture<>();
+            plugin.getServer().getScheduler().runTask(plugin, () -> future.complete(copySync(plot)));
+            return future.join();
+        }
+    }
+
+    @NotNull
+    private BlockArrayClipboard copySync(@NotNull Plot plot) {
         World world = Bukkit.getWorld(plot.getWorldName());
 
         if (world == null) {
