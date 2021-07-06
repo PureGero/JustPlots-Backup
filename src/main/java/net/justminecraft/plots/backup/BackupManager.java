@@ -174,13 +174,13 @@ public class BackupManager {
 
             backupIfNotDuplicate(plot);
 
-            for (Entity entity : world.getEntities()) {
-                if (!(entity instanceof Player) && JustPlots.getPlotAt(entity) == plot) {
-                    entity.remove();
-                }
-            }
-
             Bukkit.getScheduler().runTask(plugin, () -> {
+                for (Entity entity : world.getEntities()) {
+                    if (!(entity instanceof Player) && JustPlots.getPlotAt(entity) == plot) {
+                        entity.remove();
+                    }
+                }
+                
                 EditSession editSession = WorldEdit.getInstance().newEditSession(BukkitAdapter.adapt(world));
                 BlockVector3 to = clipboard.getOrigin();
                 Operation operation = new ClipboardHolder(clipboard).createPaste(editSession).to(to).ignoreAirBlocks(false).copyBiomes(true).copyEntities(true).build();
